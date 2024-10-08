@@ -1,8 +1,10 @@
-CCwin :=x86_64-w64-mingw32-gcc
-CClux :=gcc
+CC :=x86_64-w64-mingw32-gcc
+CCFLG :=-I src/include
 
 all:
-	$(CCwin) -o hex.exe src/main.c
-	$(CClux) -o hex.bin src/main.c
+	$(CC) -c src/hex.c $(CCFLG)
+	$(CC) -c src/file.c $(CCFLG)
+	$(CC) -omain.exe file.o hex.o $(CCFLG)
 
-.PHONY: all
+
+.PHONY: all hexdmp

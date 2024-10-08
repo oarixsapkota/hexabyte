@@ -1,6 +1,5 @@
 *.o
 *.bin
 *.exe
-hex
-hex.*
 test.*
+lib/
