@@ -5,6 +5,7 @@
 #include "file.h"
 #include "type.h"
 #include "lexical.h"
+#include "hexlib.h"
 
 
 int main(int argv,char **argc) {
@@ -16,8 +17,8 @@ int main(int argv,char **argc) {
   lexical(current, file.content, index);
 
   free(file.content);
-
-  printf("file Length  : %lu\n",file.length);
+  debugf("file Length  : %lu\n",file.length);
+  debugf("line count   : %d\n",file.linecount);
 
   return 0;
 }

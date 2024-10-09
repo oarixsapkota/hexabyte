@@ -4,37 +4,15 @@
 /* token type enum */
 
 typedef enum {
-  EXIT,
-} typekeyword;
-
-typedef enum {
-  oPren,
-  cPren,
-} typeseprator;
-
-typedef enum {
-  INT,
-} typeliteral;
+  literal,
+  keyword,
+  seprator,
+} tokentype;
 
 /* token type struct */
 
 typedef struct {
-  typekeyword type;
-} tokenkeyword;
-
-typedef struct {
-  typeseprator type;
-} tokenseprator;
-
-typedef struct {
-  typeliteral type;
-  int value;
-} tokenliteral;
-
-typedef struct {
-  tokenliteral literal;
-  tokenseprator seprator;
-  tokenkeyword keyword;
+  tokentype type;
   long index;
 } token;
 

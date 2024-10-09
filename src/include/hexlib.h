@@ -6,6 +6,7 @@
 
 void errf(const char *format, ...);
 void warnf(const char *format, ...);
+void debugf(const char *format, ...);
 int isSymbol(char c);
 
 #endif

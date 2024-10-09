@@ -9,7 +9,6 @@ void lexical(char current, char *content, long index) {
   while (current != '\0') {
     if ( current == '<') {
       index = skipcomment(current,content,index);
-      printf("return index : %lu\n", index);
     } else if (isalpha(current)) {
       printf("Found Alpha  : %c\n", current);
     } else if (isdigit(current)) {
@@ -17,19 +16,19 @@ void lexical(char current, char *content, long index) {
     } else if (isSymbol(current)) {
       printf("Found Symbol : %c\n", current);
     }
-
+    
     index++;
     current = content[index];
   }
 }
 
 long skipcomment(char current, char *content, long index) {
-  printf("\nfound comment: %c",current);
+  debugf("found comment: %c",current);
 
   index++;
   current = content[index];
 
-  printf("%c",current);
+  debugf("%c",current);
 
   while (current != '>') {
     switch (current) {
@@ -44,10 +43,10 @@ long skipcomment(char current, char *content, long index) {
     }
     index++;
     current = content[index];
-    printf("%c",current);
+    debugf("%c",current);
   }
 
-  printf("\n");
+  debugf("\nreturn index : %lu\n", index);
 
   return index;
 }
