@@ -5,10 +5,14 @@
 #include "lexical.h"
 #include "hexlib.h"
 
-void lexical(char current, char *content, long index) {
+long globleindex = 0;
+
+void lexical(char *content) {
+  char current = content[globleindex];
+
   while (current != '\0') {
     if ( current == '<') {
-      index = skipcomment(current,content,index);
+      globleindex = skipcomment(current,content,globleindex);
     } else if (isalpha(current)) {
       printf("Found Alpha  : %c\n", current);
     } else if (isdigit(current)) {
@@ -16,17 +20,17 @@ void lexical(char current, char *content, long index) {
     } else if (isSymbol(current)) {
       printf("Found Symbol : %c\n", current);
     }
-    
-    index++;
-    current = content[index];
+
+    globleindex++;
+    current = content[globleindex];
   }
 }
 
-long skipcomment(char current, char *content, long index) {
+long skipcomment(char current, char *content, long globleindex) {
   debugf("found comment: %c",current);
 
-  index++;
-  current = content[index];
+  globleindex++;
+  current = content[globleindex];
 
   debugf("%c",current);
 
@@ -41,12 +45,12 @@ long skipcomment(char current, char *content, long index) {
         free(content);
         exit(2);
     }
-    index++;
-    current = content[index];
+    globleindex++;
+    current = content[globleindex];
     debugf("%c",current);
   }
 
-  debugf("\nreturn index : %lu\n", index);
+  debugf("\nreturn globleindex : %lu\n", globleindex);
 
-  return index;
+  return globleindex;
 }

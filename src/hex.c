@@ -11,10 +11,7 @@
 int main(int argv,char **argc) {
   filedata file = rdfile(argc[1]);
 
-  long index = 0;
-  char current = file.content[index];
-
-  lexical(current, file.content, index);
+  lexical(file.content);
 
   free(file.content);
   debugf("file Length  : %lu\n",file.length);
