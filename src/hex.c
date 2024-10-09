@@ -9,7 +9,27 @@
 
 
 int main(int argv,char **argc) {
-  filedata file = rdfile(argc[1]);
+
+  char *inputfilename;
+  char *outputfilename;
+
+  for (int i = 1; i < argv; i++) {
+    if (isflag(argc[i])) {
+      int flagtype  = getflagtype(argc[i]);
+      if (flagtype == 9) {
+        inputfilename = argc[i + 1];
+      }
+      if (flagtype == 7) {
+        outputfilename = argc[i + 1];
+      }
+    }
+  }
+
+  if (outputfilename == NULL) {
+    outputfilename = "asa.temp.s";
+  }
+
+  filedata file = rdfile(inputfilename);
 
   lexical(file.content);
 
