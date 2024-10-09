@@ -10,6 +10,8 @@ int main(int argv,char **argc) {
 
   printf("%s\nfile length : %ld char\nline count : %d",file.content,file.length,file.linecount);
 
+  wrtfile("test.o",file.content);
+
   free(file.content);
 
   return 0;

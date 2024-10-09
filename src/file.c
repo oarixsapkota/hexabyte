@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "file.h"
 
 filedata rdfile(char *filename) {
@@ -44,4 +45,25 @@ filedata rdfile(char *filename) {
 
   return retfile;
 
+}
+
+void wrtfile(char *filename, char *buffer) {
+  FILE *file = fopen(filename, "wb");
+
+  if (file == NULL) {
+    perror("Error opening file");
+    exit(1);
+  }
+
+  fseek(file, 0, SEEK_END);
+
+  size_t result = fwrite(buffer, sizeof(char), strlen(buffer), file);
+
+  if (result != strlen(buffer)) {
+    perror("Error writing to file");
+    fclose(file);
+    exit(1);
+  }
+
+  fclose(file);
 }

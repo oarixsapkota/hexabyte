@@ -8,5 +8,6 @@ typedef struct {
 } filedata;
 
 filedata rdfile(char *filename);
+void wrtfile(char *filename, char *buffer);
 
 #endif
