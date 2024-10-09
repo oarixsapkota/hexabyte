@@ -15,5 +15,9 @@ int main(int argv,char **argc) {
 
   lexical(current, file.content, index);
 
+  free(file.content);
+
+  printf("file Length  : %lu\n",file.length);
+
   return 0;
 }

@@ -1,6 +1,8 @@
 #ifndef _TYPE_H
 #define _TYPE_H
 
+/* token type enum */
+
 typedef enum {
   EXIT,
 } typekeyword;
@@ -13,6 +15,8 @@ typedef enum {
 typedef enum {
   INT,
 } typeliteral;
+
+/* token type struct */
 
 typedef struct {
   typekeyword type;
@@ -27,7 +31,14 @@ typedef struct {
   int value;
 } tokenliteral;
 
-/* file type def */
+typedef struct {
+  tokenliteral literal;
+  tokenseprator seprator;
+  tokenkeyword keyword;
+  long index;
+} token;
+
+/* file type struct */
 
 typedef struct {
   char *content;

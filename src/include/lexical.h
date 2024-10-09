@@ -3,5 +3,6 @@
 
 void lexical(char current, char *content, long index);
 long skipcomment(char current, char *content, long index);
+int isSymbol(char c);
 
 #endif

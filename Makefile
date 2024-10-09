@@ -1,10 +1,22 @@
-CC :=x86_64-w64-mingw32-gcc
+#CC :=x86_64-w64-mingw32-gcc
+CC :=gcc
 CCFLG :=-I src/include
 
-all:
-	$(CC) -c src/hex.c $(CCFLG)
-	$(CC) -c src/file.c $(CCFLG)
-	$(CC) -c src/lexcial.c $(CCFLG)
-	$(CC) -o main.exe file.o hex.o lexcial.o $(CCFLG)
+all: main
 
-.PHONY: all hexdmp
+main: hex.o lexcial.o file.o
+	$(CC) -o main hex.o lexcial.o file.o $(CCFLG)
+
+hex.o: src/hex.c
+	$(CC) -c src/hex.c $(CCFLG)
+
+lexcial.o: src/lexcial.c
+	$(CC) -c src/lexcial.c $(CCFLG)
+
+file.o: src/file.c
+	$(CC) -c src/file.c $(CCFLG)
+
+clean:
+	rm -f *.o *.exe main
+
+.PHONY: all clean
