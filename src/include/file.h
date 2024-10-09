@@ -1,6 +1,12 @@
 #ifndef _FILE_H
 #define _FILE_H
 
-char *rdfile(char *filename);
+typedef struct {
+    char *content;
+    long length;
+    int linecount;
+} filedata;
+
+filedata rdfile(char *filename);
 
 #endif

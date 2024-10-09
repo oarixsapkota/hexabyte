@@ -1,9 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 #include "file.h"
 
 
 int main(int argv,char **argc) {
-  printf("%s",rdfile(argc[1]));
+  filedata file = rdfile(argc[1]);
+
+  printf("%s\nfile length : %ld char\nline count : %d",file.content,file.length,file.linecount);
+
+  free(file.content);
+
   return 0;
 }

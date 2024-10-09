@@ -6,5 +6,4 @@ all:
 	$(CC) -c src/file.c $(CCFLG)
 	$(CC) -omain.exe file.o hex.o $(CCFLG)
 
-
 .PHONY: all hexdmp
