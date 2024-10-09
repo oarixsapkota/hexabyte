@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h>
+
 #include "file.h"
+#include "type.h"
+#include "lexical.h"
 
 
 int main(int argv,char **argc) {
   filedata file = rdfile(argc[1]);
 
-  printf("%s\nfile length : %ld char\nline count : %d",file.content,file.length,file.linecount);
+  long index = 0;
+  char current = file.content[index];
 
-  wrtfile("test.o",file.content);
-
-  free(file.content);
+  lexical(current, file.content, index);
 
   return 0;
 }
