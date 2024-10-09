@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
+
 #include "lexical.h"
+#include "hexlib.h"
 
 void lexical(char current, char *content, long index) {
   while (current != '\0') {
@@ -29,6 +32,16 @@ long skipcomment(char current, char *content, long index) {
   printf("%c",current);
 
   while (current != '>') {
+    switch (current) {
+      case '\0':
+        errf("Comment not closed properly\n");
+        free(content);
+        exit(2);
+      case '<':
+        errf("Comment not closed properly\n");
+        free(content);
+        exit(2);
+    }
     index++;
     current = content[index];
     printf("%c",current);
@@ -37,11 +50,4 @@ long skipcomment(char current, char *content, long index) {
   printf("\n");
 
   return index;
-}
-
-int isSymbol(char c) {
-  if (!isalpha(c) && !isdigit(c) && !isspace(c)) {
-    return 1;
-  }
-  return 0;
 }
