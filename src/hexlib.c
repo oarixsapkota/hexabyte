@@ -15,7 +15,7 @@ void errf(const char *format, ...) {
 void warnf(const char *format, ...) {
   va_list args;
   va_start(args, format);
-  fprintf(stderr, "\033[1;34mWARNING: ");
+  fprintf(stderr, "\033[1;35mWARNING: ");
   vfprintf(stderr, format, args);
   fprintf(stderr, "\033[0m");
   va_end(args);
@@ -24,7 +24,7 @@ void warnf(const char *format, ...) {
 void debugf(const char *format, ...) {
   va_list args;
   va_start(args, format);
-  fprintf(stderr, "\033[0;35m");
+  fprintf(stderr, "\033[0;34mINFO: ");
   vfprintf(stderr, format, args);
   fprintf(stderr, "\033[0m");
   va_end(args);

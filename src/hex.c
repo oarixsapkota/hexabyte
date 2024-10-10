@@ -35,7 +35,6 @@ int main(int argv,char **argc) {
 
   free(file.content);
   debugf("file Length  : %lu\n",file.length);
-  debugf("line count   : %d\n",file.linecount);
 
   return 0;
 }

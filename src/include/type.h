@@ -21,7 +21,6 @@ typedef struct {
 typedef struct {
   char *content;
   long length;
-  int linecount;
 } filedata;
 
 #endif

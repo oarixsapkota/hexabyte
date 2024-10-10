@@ -26,14 +26,10 @@ filedata rdfile(char *filename) {
   }
 
   char current = fgetc(file);
-  int linecount = 1;
 
   for(int i = 0; i < length; i++) {
     buffer[i] = current;
     current = fgetc(file);
-    if (current == '\n') {
-      linecount++;
-    }
   }
 
   buffer[length] = '\0';
@@ -41,7 +37,6 @@ filedata rdfile(char *filename) {
   fclose(file);
 
   retfile.content = buffer;
-  retfile.linecount = linecount;
   retfile.length = length;
 
   return retfile;
